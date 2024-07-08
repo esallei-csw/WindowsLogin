@@ -1,7 +1,7 @@
-object Form2: TForm2
+object frmWindowsLogin: TfrmWindowsLogin
   Left = 0
   Top = 0
-  Caption = 'Form2'
+  Caption = 'Windows Login'
   ClientHeight = 299
   ClientWidth = 635
   Color = clBtnFace
@@ -13,4 +13,20 @@ object Form2: TForm2
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
+  object lblUserName: TLabel
+    Left = 296
+    Top = 72
+    Width = 52
+    Height = 13
+    Caption = 'User Name'
+  end
+  object btnLogin: TButton
+    Left = 248
+    Top = 112
+    Width = 153
+    Height = 57
+    Caption = 'Login'
+    TabOrder = 0
+    OnClick = btnLoginClick
+  end
 end

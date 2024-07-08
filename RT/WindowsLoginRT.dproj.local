@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2024/07/08 15:34:29.584,=rtl.dcp</Transaction>
+    <Transaction>2024/07/08 15:39:26.211,C:\Sviluppo\WindowsLogin\RT\WindowsLoginRT.dproj=C:\Users\esallei\OneDrive - centrosoftware.com\Documenti\Embarcadero\Studio\Projects\Package1.dproj</Transaction>
+    <Transaction>2024/07/08 15:39:35.038,=C:\Sviluppo\WindowsLogin\RT\Unit1.pas</Transaction>
+    <Transaction>2024/07/08 15:40:13.823,C:\Sviluppo\WindowsLogin\RT\Source\WindowsLoginRT.Logic.pas=C:\Sviluppo\WindowsLogin\RT\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

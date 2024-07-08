@@ -2,13 +2,13 @@ program WindowsLogin;
 
 uses
   Vcl.Forms,
-  WindowsLogin.main in 'WindowsLogin.main.pas' {Form2};
+  WindowsLogin.main in 'WindowsLogin.main.pas' {frmWindowsLogin};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm2, Form2);
+  Application.CreateForm(TfrmWindowsLogin, frmWindowsLogin);
   Application.Run;
 end.

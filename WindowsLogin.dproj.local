@@ -2,8 +2,9 @@
 <BorlandProject>
   <Transactions>
     <Transaction>2024/07/08 15:29:20.133,=C:\Users\esallei\OneDrive - centrosoftware.com\Documenti\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>2024/07/08 15:29:55.131,C:\Sviluppo\WindowsLogin\WindowsLogin.main.pas=C:\Users\esallei\OneDrive - centrosoftware.com\Documenti\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
     <Transaction>2024/07/08 15:29:55.131,C:\Sviluppo\WindowsLogin\WindowsLogin.main.dfm=C:\Users\esallei\OneDrive - centrosoftware.com\Documenti\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>2024/07/08 15:29:55.131,C:\Sviluppo\WindowsLogin\WindowsLogin.main.pas=C:\Users\esallei\OneDrive - centrosoftware.com\Documenti\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
     <Transaction>2024/07/08 15:30:08.217,C:\Sviluppo\WindowsLogin\WindowsLogin.dproj=C:\Users\esallei\OneDrive - centrosoftware.com\Documenti\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
+    <Transaction>2024/07/08 15:33:22.485,=C:\Sviluppo\WindowsLogin\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>
