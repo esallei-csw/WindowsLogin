@@ -37,6 +37,3 @@ contains
   WindowsLoginRT.UserInfo.Model in 'Source\WindowsLoginRT.UserInfo.Model.pas';
 
 end.
-
-
-

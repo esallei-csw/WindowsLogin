@@ -10,9 +10,6 @@ type
   TfrmWindowsLogin = class(TForm)
     btnLogin: TButton;
     lblUserName: TLabel;
-    lblMail: TLabel;
-    lblSAMAccountName: TLabel;
-    lblUserAccountControl: TLabel;
     procedure btnLoginClick(Sender: TObject);
   private
     { Private declarations }
@@ -38,16 +35,8 @@ procedure TfrmWindowsLogin.btnLoginClick(Sender: TObject);
 var
   LUserInfo: TUserInfoModel;
 begin
-  LUserInfo := TUserInfoModel.Create;
-  try
-    LUserInfo := LocalDBLogin.GetLoggedInUser;
-    lblUserName.Caption := LUserInfo.DisplayName;
-    lblMail.Caption := LUserInfo.EMail;
-    lblSAMAccountName.Caption := LUserInfo.sAMAccountName;
-    lblUserAccountControl.Caption := LUserInfo.UserAccountControl;
-  finally
-    LUserInfo.Free;
-  end;
+  LUserInfo := LocalDBLogin.GetLoggedInUser;
+  lblUserName.Caption := LUserInfo.DisplayName;
 end;
 
 function TfrmWindowsLogin.GetLocalDBLogin: TLocalDBLogin;

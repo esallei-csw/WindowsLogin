@@ -20,7 +20,6 @@ MAIL = 'mail';
 DISPLAYNAME = 'displayName';
 USER_ACCOUNT_CTRL = 'userAccountControl';
 DESCRIPTION = 'description';
-DISTINGUISHED_NAME = 'distinguishedName';
 
 ALREADY_LOGGED = 'Already logged in!';
 

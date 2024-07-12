@@ -12,8 +12,6 @@ type
     FDisplayName: string;
     FEmail: string;
     FUserAccountControl: string;
-    FDescription: string;
-    FDistinguishedName: string;
 
 
   public
@@ -23,8 +21,6 @@ type
     property EMail: string read FEmail write FEmail;
     property DisplayName: string read FDisplayName write FDisplayName;
     property UserAccountControl: string read FUserAccountControl write FUserAccountControl;
-    property Description: string read FDescription write FDescription;
-    property DistinguishedName: string read FDistinguishedName write FDistinguishedName;
 
   end;
 
@@ -41,8 +37,6 @@ begin
   FDisplayName := EmptyStr;
   FEmail := EmptyStr;
   FUserAccountControl := EmptyStr;
-  FDescription := EmptyStr;
-  FDistinguishedName := EmptyStr;
 end;
 
 destructor TUserInfoModel.Destroy;

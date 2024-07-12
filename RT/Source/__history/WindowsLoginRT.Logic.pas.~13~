@@ -28,7 +28,7 @@ end;
 implementation
 
 uses
-  ipwldap, System.SysUtils, ComObj, ActiveX, Winapi.Windows, WindowsLoginRT.Constants, Variants;
+  ipwldap, System.SysUtils, ComObj, ActiveX, Winapi.Windows, WindowsLoginRT.Constants;
 
 
 { TLocalDBLogin }
