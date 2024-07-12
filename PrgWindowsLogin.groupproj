@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{64818DB4-20ED-484B-97D7-DF42AF448AA3}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="WindowsLogin.dproj">
+            <Dependencies>RT\WindowsLoginRT.dproj</Dependencies>
+        </Projects>
+        <Projects Include="RT\WindowsLoginRT.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="WindowsLogin" DependsOnTargets="WindowsLoginRT">
+        <MSBuild Projects="WindowsLogin.dproj"/>
+    </Target>
+    <Target Name="WindowsLogin:Clean" DependsOnTargets="WindowsLoginRT:Clean">
+        <MSBuild Projects="WindowsLogin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WindowsLogin:Make" DependsOnTargets="WindowsLoginRT:Make">
+        <MSBuild Projects="WindowsLogin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="WindowsLoginRT">
+        <MSBuild Projects="RT\WindowsLoginRT.dproj"/>
+    </Target>
+    <Target Name="WindowsLoginRT:Clean">
+        <MSBuild Projects="RT\WindowsLoginRT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WindowsLoginRT:Make">
+        <MSBuild Projects="RT\WindowsLoginRT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="WindowsLogin;WindowsLoginRT"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="WindowsLogin:Clean;WindowsLoginRT:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="WindowsLogin:Make;WindowsLoginRT:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

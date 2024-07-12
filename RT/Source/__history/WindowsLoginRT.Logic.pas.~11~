@@ -1,0 +1,113 @@
+unit WindowsLoginRT.Logic;
+
+interface
+
+type
+  TLocalDBLogin = class
+  private
+  {Private Declarations}
+  public
+  {Public Declarations}
+  function SearchLDAP(AUserName: string): string;
+  function SearchLoggedInUser(AUSerName: string): string;
+
+
+end;
+
+implementation
+
+uses
+  ipwldap, System.SysUtils, ComObj, ActiveX;
+
+
+{ TLocalDBLogin }
+
+function TLocalDBLogin.SearchLDAP(AUsername: string): string;
+var
+  Ldap: TipwLDAP;
+begin
+  Ldap := TipwLDAP.Create(nil);
+  try
+    Ldap.ServerName := '172.16.1.1';
+    Ldap.DN := 'OU=Cantone,DC=cswdc,DC=local';
+    Ldap.ServerPort := 389;
+    try
+      Ldap.Bind;
+    except on E: Exception do
+      begin
+        raise Exception.Create('Failed to connect to LDAP server: ' + E.Message);
+      end;
+    end;
+
+
+
+    try
+      // Imposta il filtro di ricerca per trovare l'utente
+      Ldap.Search(Format('(sAMAccountName=%s)', [AUserName]));
+    except on E: Exception do
+      begin
+        raise Exception.Create('Failed to search UserName: ' + E.Message);
+      end;
+    end;
+
+    if Ldap.ResultCode = 0 then
+    begin
+      Result := 'Distinguished name: ' + Ldap.ResultDN;
+    end
+    else
+    begin
+      raise Exception.Create('User Not Found, Result code: ' + Ldap.ResultCode.ToString);
+    end;
+  finally
+    Ldap.Free;
+  end;
+end;
+
+function TLocalDBLogin.SearchLoggedInUser(AUSerName: string): string;
+var
+  BaseDN, Filter: string;
+  RootDSE, Connection, Command, RecordSet: OLEVariant;
+begin
+  CoInitialize(nil);
+  try
+
+    // Imposta il DN di base e il filtro di ricerca
+    BaseDN := 'DC=cswdc,DC=local';
+    Filter := Format('(sAMAccountName=%s)', [AUserName]);
+
+    // Connettiti a RootDSE per ottenere il nome di dominio
+    RootDSE := CreateOleObject('LDAP://RootDSE');
+    BaseDN := RootDSE.Get('defaultNamingContext');
+
+    // Crea la connessione LDAP
+    Connection := CreateOleObject('ADODB.Connection');
+    Connection.Provider := 'ADSDSOObject';
+    Connection.Open('Active Directory Provider');
+
+    // Crea il comando LDAP
+    Command := CreateOleObject('ADODB.Command');
+    Command.ActiveConnection := Connection;
+    Command.CommandText := Format('<LDAP://%s>;(%s);sAMAccountName,displayName,mail,userAccountControl;subtree', [BaseDN, Filter]);
+
+    // Esegui la query
+    RecordSet := Command.Execute;
+
+    // Verifica i risultati
+    if not RecordSet.EOF then
+    begin
+//      ShowMessage('sAMAccountName: ' + RecordSet.Fields['sAMAccountName'].Value);
+//      ShowMessage('displayName: ' + RecordSet.Fields['displayName'].Value);
+      Result := 'displayName: ' + RecordSet.Fields['displayName'].Value;
+//      ShowMessage('mail: ' + RecordSet.Fields['mail'].Value);
+//      ShowMessage('userAccountControl: ' + RecordSet.Fields['userAccountControl'].Value);
+    end
+    else
+    begin
+      raise Exception.Create('User not Found!');
+    end;
+  finally
+    CoUninitialize;
+  end;
+end;
+
+end.

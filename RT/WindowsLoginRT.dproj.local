@@ -1,9 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
-    <Transaction>2024/07/08 15:34:29.584,=rtl.dcp</Transaction>
-    <Transaction>2024/07/08 15:39:26.211,C:\Sviluppo\WindowsLogin\RT\WindowsLoginRT.dproj=C:\Users\esallei\OneDrive - centrosoftware.com\Documenti\Embarcadero\Studio\Projects\Package1.dproj</Transaction>
-    <Transaction>2024/07/08 15:39:35.038,=C:\Sviluppo\WindowsLogin\RT\Unit1.pas</Transaction>
-    <Transaction>2024/07/08 15:40:13.823,C:\Sviluppo\WindowsLogin\RT\Source\WindowsLoginRT.Logic.pas=C:\Sviluppo\WindowsLogin\RT\Unit1.pas</Transaction>
+	<Transactions>
+    <Transaction>2024/07/08 15:34:29.000.584,=rtl.dcp</Transaction>
+    <Transaction>2024/07/08 15:39:26.000.211,C:\Sviluppo\WindowsLogin\RT\WindowsLoginRT.dproj=C:\Users\esallei\OneDrive - centrosoftware.com\Documenti\Embarcadero\Studio\Projects\Package1.dproj</Transaction>
+    <Transaction>2024/07/08 15:39:35.000.038,=C:\Sviluppo\WindowsLogin\RT\Unit1.pas</Transaction>
+    <Transaction>2024/07/08 15:40:13.000.823,C:\Sviluppo\WindowsLogin\RT\Source\WindowsLoginRT.Logic.pas=C:\Sviluppo\WindowsLogin\RT\Unit1.pas</Transaction>
+    <Transaction>2024/07/09 10:43:34.000.971,=vcl.dcp</Transaction>
+    <Transaction>2024/07/12 11:27:42.837,=C:\Sviluppo\WindowsLogin\RT\Unit1.pas</Transaction>
+    <Transaction>2024/07/12 11:28:04.830,C:\Sviluppo\WindowsLogin\RT\Source\WindowsLoginRT.Constants.pas=C:\Sviluppo\WindowsLogin\RT\Unit1.pas</Transaction>
+    <Transaction>2024/07/12 11:37:42.953,=C:\Sviluppo\WindowsLogin\RT\Unit1.pas</Transaction>
+    <Transaction>2024/07/12 11:40:12.046,C:\Sviluppo\WindowsLogin\RT\Source\WindowsLoginRT.UserInfo.Model.pas=C:\Sviluppo\WindowsLogin\RT\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

@@ -28,9 +28,12 @@ package WindowsLoginRT;
 {$IMPLICITBUILD ON}
 
 requires
-  rtl;
+  rtl,
+  vcl;
 
 contains
-  WindowsLoginRT.Logic in 'Source\WindowsLoginRT.Logic.pas';
+  WindowsLoginRT.Logic in 'Source\WindowsLoginRT.Logic.pas',
+  WindowsLoginRT.Constants in 'Source\WindowsLoginRT.Constants.pas',
+  WindowsLoginRT.UserInfo.Model in 'Source\WindowsLoginRT.UserInfo.Model.pas';
 
 end.

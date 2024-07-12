@@ -1,0 +1,53 @@
+unit WindowsLogin.main;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, WindowsLoginRT.Logic;
+
+type
+  TfrmWindowsLogin = class(TForm)
+    btnLogin: TButton;
+    lblUserName: TLabel;
+    procedure btnLoginClick(Sender: TObject);
+  private
+    { Private declarations }
+    FLocalDBLogin : TLocalDBLogin;
+
+    function GetLocalDBLogin: TLocalDBLogin;
+    property LocalDBLogin: TLocalDBLogin read GetLocalDBLogin write FLocalDBLogin;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmWindowsLogin: TfrmWindowsLogin;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmWindowsLogin.btnLoginClick(Sender: TObject);
+var
+  LUserName: string;
+  LUserNameLen: DWORD;
+begin
+  LUserNameLen := 256;
+  SetLength(LUserName, LUserNameLen);
+  if GetUserName(PChar(LUserName), LUserNameLen) then
+    SetLength(LUserName, LUserNameLen - 1)
+  else
+    RaiseLastOSError;
+//  lblUserName.Caption := LUserName;
+  lblUserName.Caption := LocalDBLogin.SearchLDAP(LUserName);
+end;
+
+function TfrmWindowsLogin.GetLocalDBLogin: TLocalDBLogin;
+begin
+  if not Assigned(FLocalDBLogin) then
+    FLocalDBLogin := TLocalDBLogin.Create;
+  Result := FLocalDBLogin;
+end;
+
+end.

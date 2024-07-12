@@ -1,0 +1,78 @@
+unit WindowsLoginRT.Logic;
+
+interface
+
+type
+  TLocalDBLogin = class
+  private
+  public
+  procedure ConnectToActiveDirectory;
+  function GetUserDetails: string;
+  procedure SearchLDAP(AUserName: string);
+
+
+end;
+
+implementation
+
+uses
+  ipwldap, vcl.Forms, System.SysUtils, vcl.Dialogs;
+
+
+{ TLocalDBLogin }
+
+procedure TLocalDBLogin.ConnectToActiveDirectory;
+var
+  ldap: Tipwldap;
+begin
+//  ldap := Tipwldap.Create(nil);
+//  try
+//    ldap.Host := 'ldap://CSWDC';
+//    ldap.Port := LDAP_PORT;
+//    ldap.Username := 'esallei';
+//    ldap.Password := ''; // Password non necessaria per SSO
+//    ldap.Bind;
+//    // Ora puoi eseguire le query LDAP
+//  finally
+//    ldap.Free;
+//  end;
+end;
+
+procedure TLocalDBLogin.SearchLDAP(AUsername: string);
+var
+  Ldap: TipwLDAP;
+begin
+  Ldap := TipwLDAP.Create(nil);
+  try
+    Ldap.ServerName := 'ldap://CSWDC';
+    Ldap.DN := 'DC=CentroSoftware,DC=com';
+    Ldap.Name := AUsername; // Metti qui il nome utente LDAP se necessario
+    Ldap.Password := '';
+
+    Ldap.Bind;
+
+    // Imposta il filtro di ricerca per trovare l'utente
+    Ldap.Search(Format('(sAMAccountName=%s)', [AUsername]));
+
+    if Ldap.ResultCode = 0 then
+    begin
+      ShowMessage('Distinguished Name: ' + Ldap.ResultDN);
+      ShowMessage('Full Name: ' + Ldap.ResultDN);
+    end
+    else
+    begin
+      ShowMessage('User not found.');
+    end;
+  finally
+    Ldap.Free;
+  end;
+end;
+
+
+function TLocalDBLogin.GetUserDetails: string;
+begin
+
+
+end;
+
+end.
