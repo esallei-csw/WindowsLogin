@@ -35,12 +35,12 @@ object frmWindowsLogin: TfrmWindowsLogin
     Height = 13
     Caption = 'SAMAccountName'
   end
-  object lblUserAccountControl: TLabel
+  object lblObjectSid: TLabel
     Left = 248
     Top = 152
-    Width = 96
+    Width = 49
     Height = 13
-    Caption = 'UserAccountControl'
+    Caption = 'Object Sid'
   end
   object lblDescription: TLabel
     Left = 248

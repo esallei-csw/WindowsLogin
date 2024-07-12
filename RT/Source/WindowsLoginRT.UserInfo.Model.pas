@@ -14,6 +14,7 @@ type
     FUserAccountControl: string;
     FDescription: string;
     FDistinguishedName: string;
+    FObjectSid: string;
 
 
   public
@@ -25,6 +26,7 @@ type
     property UserAccountControl: string read FUserAccountControl write FUserAccountControl;
     property Description: string read FDescription write FDescription;
     property DistinguishedName: string read FDistinguishedName write FDistinguishedName;
+    property ObjectSid: string read FObjectSid write FObjectSid;
 
   end;
 
@@ -43,6 +45,7 @@ begin
   FUserAccountControl := EmptyStr;
   FDescription := EmptyStr;
   FDistinguishedName := EmptyStr;
+  FObjectSid := EmptyStr;
 end;
 
 destructor TUserInfoModel.Destroy;

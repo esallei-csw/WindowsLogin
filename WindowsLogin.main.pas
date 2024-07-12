@@ -12,7 +12,7 @@ type
     lblUserName: TLabel;
     lblMail: TLabel;
     lblSAMAccountName: TLabel;
-    lblUserAccountControl: TLabel;
+    lblObjectSid: TLabel;
     lblDescription: TLabel;
     edtDominio: TEdit;
     lblDomainName: TLabel;
@@ -54,7 +54,7 @@ begin
     lblUserName.Caption := LUserInfo.DisplayName;
     lblMail.Caption := LUserInfo.EMail;
     lblSAMAccountName.Caption := LUserInfo.sAMAccountName;
-    lblUserAccountControl.Caption := LUserInfo.UserAccountControl;
+    lblObjectSid.Caption := LUserInfo.ObjectSid;
     lblDescription.Caption := LUserInfo.Description;
   finally
     LUserInfo.Free;

@@ -75,23 +75,18 @@ var
 begin
   CoInitialize(nil);
   try
-
     // Imposta il DN di base e il filtro di ricerca
     Filter := Format(SAMACCOUNT_FORMAT, [GetLocalUserName]);
-
     // Crea la connessione LDAP
     Connection := CreateOleObject(AD_CONNECTION);
     Connection.Provider := AD_OBJ;
     Connection.Open(AD_PROVIDER);
-
     // Crea il comando LDAP
     Command := CreateOleObject(ADOBD_COMMAND);
     Command.ActiveConnection := Connection;
     Command.CommandText := Format(COMMAND_STRING, [FBaseDN, Filter]);
-
     // Esegui la query
     RecordSet := Command.Execute;
-
     // Verifica i risultati
     if not RecordSet.EOF then
     begin
@@ -99,9 +94,9 @@ begin
       UserInfo.EMail := VariantToString(RecordSet.Fields[MAIL].Value);
       UserInfo.DisplayName := VariantToString(RecordSet.Fields[DISPLAYNAME].Value);
       UserInfo.UserAccountControl := VariantToString(RecordSet.Fields[USER_ACCOUNT_CTRL].Value);
-      UserInfo.DistinguishedName := VariantToString(RecordSet.Fields[DISTINGUISHED_NAME].Value);
       UserInfo.Description := VariantToString(RecordSet.Fields[DESCRIPTION].Value);
-
+      UserInfo.DistinguishedName := VariantToString(RecordSet.Fields[DISTINGUISHED_NAME].Value);
+      UserInfo.ObjectSid := VariantToString(RecordSet.Fields[OBJECT_SID].Value);
 
     end
     else
@@ -113,8 +108,8 @@ begin
   end;
 end;
 
-//alcuni valori di active directory sono composti da multi-valore,
-//questa funzione converte qualsiasi valore in un singolo valore di tipo stringa
+//alcuni attributi di active directory sono composti da multi-valore,
+//questa funzione converte qualsiasi attributo in un singolo valore di tipo stringa
 function TLocalDBLogin.VariantToString(const V: variant): string;
  var
     I: Integer;
@@ -125,7 +120,7 @@ function TLocalDBLogin.VariantToString(const V: variant): string;
       for I := VarArrayLowBound(V, 1) to VarArrayHighBound(V, 1) do
       begin
         if Result <> '' then
-          Result := Result + ', ';
+          Result := Result;
         Result := Result + VarToStr(V[I]);
       end;
     end
@@ -134,5 +129,7 @@ function TLocalDBLogin.VariantToString(const V: variant): string;
       Result := VarToStr(V);
     end;
   end;
+
+
 
 end.
